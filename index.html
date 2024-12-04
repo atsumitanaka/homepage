@@ -20,7 +20,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #333;
+            background-color: #e6e6e6; /* メニューバー背景色を薄いグレーに変更 */
+            color: #000; /* ヘッダー内の文字色を黒に */
         }
         .logo img {
             height: 50px; /* ロゴ画像の高さ */
@@ -34,12 +35,12 @@
             padding: 8px 16px;
             font-size: 14px;
             border: 1px solid #ccc;
-            background-color: #444;
-            color: #fff;
+            background-color: #fff;
+            color: #000; /* ボタン文字色を黒 */
             cursor: pointer;
         }
         .header-buttons button:hover {
-            background-color: #555;
+            background-color: #ddd; /* ホバー時の背景色を少し濃いグレーに */
         }
 
         /* キャッチコピーとロゴのセクション */
@@ -70,22 +71,24 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
+            background-color: #e6e6e6; /* メニュー背景色を薄いグレーに */
         }
         .menu-item {
             flex: 1 1 calc(25% - 20px); /* 横に最大4つ配置 */
             max-width: calc(25% - 20px);
             text-align: center;
             padding: 20px;
-            background-color: #222;
-            border: 1px solid #444;
+            background-color: #fff;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.1);
+            color: #000; /* メニュー文字色を黒に */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.2s, background-color 0.2s;
         }
         .menu-item:hover {
             transform: scale(1.05);
-            background-color: #333;
+            background-color: #ddd; /* ホバー時の背景色を少し濃いグレーに */
         }
 
         @media screen and (max-width: 768px) {
