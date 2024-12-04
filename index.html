@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>企業ホームページ</title>
     <style>
+        /* 背景全体のスタイル */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* 背景を黒 */
+            color: #fff; /* フォントカラーを白 */
+            font-family: Arial, sans-serif;
+        }
+
         /* ヘッダーのスタイル */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #f4f4f4;
+            background-color: #333;
         }
         .logo img {
             height: 50px; /* ロゴ画像の高さ */
@@ -25,28 +34,33 @@
             padding: 8px 16px;
             font-size: 14px;
             border: 1px solid #ccc;
-            background-color: #fff;
+            background-color: #444;
+            color: #fff;
             cursor: pointer;
         }
-
-        /* キャッチコピーのスタイル */
-        .hero {
-            position: relative;
-            text-align: center;
+        .header-buttons button:hover {
+            background-color: #555;
         }
-        .hero img {
+
+        /* キャッチコピーとロゴのセクション */
+        .main-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .catchphrase {
+            max-width: 600px;
+            font-size: 24px;
+            line-height: 1.8;
+            text-align: left;
+        }
+        .big-logo img {
+            max-width: 400px;
             width: 100%;
             height: auto;
-        }
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         /* メニューのスタイル */
@@ -62,20 +76,27 @@
             max-width: calc(25% - 20px);
             text-align: center;
             padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
+            background-color: #222;
+            border: 1px solid #444;
             border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.1);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background-color 0.2s;
         }
         .menu-item:hover {
             transform: scale(1.05);
+            background-color: #333;
         }
 
         @media screen and (max-width: 768px) {
-            .menu-item {
-                flex: 1 1 calc(50% - 20px); /* 横に最大2つ配置（小画面） */
+            .main-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .catchphrase {
+                margin-bottom: 20px;
+                text-align: center;
             }
         }
 
@@ -101,10 +122,18 @@
     </div>
 </header>
 
-<!-- キャッチコピー付き画像 -->
-<div class="hero">
-    <img src="hero-image.jpg" alt="キャッチコピー入りの背景画像">
-    <div class="hero-text">未来を創るデータの力</div>
+<!-- キャッチコピーとロゴ -->
+<div class="main-section">
+    <!-- キャッチコピー -->
+    <div class="catchphrase">
+        無機材料科学実験データの<br>
+        オープンデータベース<br>
+        構築プロジェクト
+    </div>
+    <!-- 大きなロゴ -->
+    <div class="big-logo">
+        <img src="big-logo.png" alt="大きなロゴ">
+    </div>
 </div>
 
 <!-- メニュー -->
