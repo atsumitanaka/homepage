@@ -48,16 +48,18 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
         /* メニューのスタイル */
-        .menu {
+          .menu {
             display: flex;
-            justify-content: space-around;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
-            background-color: #e6e6e6;
         }
         .menu-item {
+            flex: 1 1 calc(25% - 20px); /* 横に最大4つ配置 */
+            max-width: calc(25% - 20px);
             text-align: center;
             padding: 20px;
-            width: 150px;
             background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -67,6 +69,18 @@
         }
         .menu-item:hover {
             transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-item {
+                flex: 1 1 calc(50% - 20px); /* 横に最大2つ配置（小画面） */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .menu-item {
+                flex: 1 1 100%; /* 縦に1列（さらに小画面） */
+            }
         }
     </style>
 </head>
