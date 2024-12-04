@@ -11,7 +11,7 @@
             padding: 0;
             background-color: #000; /* 背景を黒 */
             color: #fff; /* フォントカラーを白 */
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* スタイリッシュなフォント */
         }
 
         /* ヘッダーのスタイル */
@@ -20,8 +20,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #e6e6e6; /* メニューバー背景色を薄いグレーに変更 */
-            color: #000; /* ヘッダー内の文字色を黒に */
+            background-color: #e6e6e6; /* 薄いグレー */
+            color: #000; /* ヘッダー文字色 */
         }
         .logo img {
             height: 50px; /* ロゴ画像の高さ */
@@ -43,25 +43,26 @@
             background-color: #ddd; /* ホバー時の背景色を少し濃いグレーに */
         }
 
-        /* キャッチコピーとロゴのセクション */
-        .main-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* ヒーローセクション */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('hero-image.jpg') no-repeat center center/cover;
         }
+
+        /* キャッチコピーのスタイル */
         .catchphrase {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             max-width: 600px;
-            font-size: 24px;
+            font-size: 32px; /* フォントサイズを大きく */
+            font-weight: bold;
             line-height: 1.8;
             text-align: left;
-        }
-        .big-logo img {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 視認性向上のため影を追加 */
         }
 
         /* メニューのスタイル */
@@ -92,14 +93,8 @@
         }
 
         @media screen and (max-width: 768px) {
-            .main-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .catchphrase {
-                margin-bottom: 20px;
-                text-align: center;
+            .menu-item {
+                flex: 1 1 calc(50% - 20px); /* 横に最大2つ配置（小画面） */
             }
         }
 
@@ -125,17 +120,13 @@
     </div>
 </header>
 
-<!-- キャッチコピーとロゴ -->
-<div class="main-section">
+<!-- ヒーローセクション -->
+<div class="hero">
     <!-- キャッチコピー -->
     <div class="catchphrase">
         無機材料科学実験データの<br>
         オープンデータベース<br>
         構築プロジェクト
-    </div>
-    <!-- 大きなロゴ -->
-    <div class="big-logo">
-        <img src="big-logo.png" alt="大きなロゴ">
     </div>
 </div>
 
