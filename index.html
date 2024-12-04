@@ -11,7 +11,7 @@
             padding: 0;
             background-color: #000; /* 背景を黒 */
             color: #fff; /* フォントカラーを白 */
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* スタイリッシュなフォント */
+            font-family: 'Arial', sans-serif; /* 丸みのないフォント */
         }
 
         /* ヘッダーのスタイル */
@@ -73,24 +73,18 @@
         .menu {
             display: flex;
             flex-direction: column;
+            align-items: flex-start; /* 左揃え */
             gap: 10px;
-            width: 100%;
-            max-width: 300px;
         }
         .menu-item {
-            text-align: center;
-            padding: 15px 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            color: #000; /* メニュー文字色を黒に */
-            font-size: 18px;
+            font-size: 18px; /* フォントサイズ */
+            font-weight: bold; /* 太字 */
+            color: #000; /* 黒字 */
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: color 0.2s;
         }
         .menu-item:hover {
-            transform: scale(1.05);
-            background-color: #ddd; /* ホバー時の背景色を少し濃いグレーに */
+            color: #555; /* ホバー時の文字色を少し明るく */
         }
 
         @media screen and (max-width: 768px) {
@@ -124,9 +118,10 @@
     <!-- キャッチコピー -->
     <div class="catchphrase">
         無機材料科学実験データの<br>
-        オープンデータベース構築プロジェクト
+        オープンデータベース<br>
+        構築プロジェクト
     </div>
-    <!-- 縦に並ぶメニューボタン -->
+    <!-- 左揃えのメニュー項目 -->
     <div class="menu">
         <div class="menu-item" onclick="location.href='/about'">Starrydataとは</div>
         <div class="menu-item" onclick="location.href='/data'">データを集める・使う</div>
