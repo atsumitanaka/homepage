@@ -13,9 +13,9 @@
             padding: 10px 20px;
             background-color: #f4f4f4;
         }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+        .logo img {
+            height: 50px; /* ロゴ画像の高さ */
+            object-fit: contain;
         }
         .header-buttons {
             display: flex;
@@ -28,6 +28,7 @@
             background-color: #fff;
             cursor: pointer;
         }
+
         /* キャッチコピーのスタイル */
         .hero {
             position: relative;
@@ -47,8 +48,9 @@
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
+
         /* メニューのスタイル */
-          .menu {
+        .menu {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -88,7 +90,9 @@
 
 <header>
     <!-- ロゴ -->
-    <div class="logo">企業ロゴ</div>
+    <div class="logo">
+        <img src="logo-image.jpg" alt="企業ロゴ">
+    </div>
     <!-- 問い合わせと言語切り替えボタン -->
     <div class="header-buttons">
         <button onclick="location.href='/contact'">問い合わせ</button>
@@ -99,7 +103,7 @@
 
 <!-- キャッチコピー付き画像 -->
 <div class="hero">
-    <img src="hero-image.JPG" alt="キャッチコピー入りの背景画像">
+    <img src="hero-image.jpg" alt="キャッチコピー入りの背景画像">
     <div class="hero-text">未来を創るデータの力</div>
 </div>
 
