@@ -63,13 +63,13 @@
         /* 子メニューエリア */
         .submenu-area {
             display: none; /* 初期状態は非表示 */
-            position: absolute;
-            top: 30px; /* ヘッダーのすぐ下に配置 */
+            position: fixed; /* ウィンドウ全体に基づく配置 */
+            top: 60px; /* ヘッダーのすぐ下に配置 */
             left: 0;
-            width: 100%; /* ヘッダー幅と同じ */
+            width: 100%; /* ウィンドウ幅いっぱい */
             background-color: #fff; /* 背景白 */
             color: #000; /* 文字黒 */
-            padding: 20px;
+            padding: 20px 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             z-index: 10; /* トップ画像より上に配置 */
