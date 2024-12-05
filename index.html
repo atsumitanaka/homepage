@@ -41,15 +41,20 @@
             font-size: 14px; /* 小さめのフォント */
             color: #000;
             cursor: pointer;
-            position: relative; /* 子メニュー配置のため */
+            position: relative;
         }
         .menu-item:hover {
             text-decoration: underline;
         }
+        .lang-switch {
+            position: absolute;
+            right: 20px; /* 右端に言語切り替え */
+            font-size: 20px;
+            cursor: pointer;
+        }
 
         /* トップ画像セクション */
         .hero {
-            margin-top: 60px; /* ヘッダーの高さ分の余白を作成 */
             width: 100%;
             height: 600px; /* トップ画像の高さを広げる */
             background: url('hero-image.jpg') no-repeat center center/cover;
@@ -61,18 +66,18 @@
         .submenu-area {
             display: none; /* 初期状態は非表示 */
             position: absolute;
-            top: 100%; /* ヘッダーのすぐ下に配置 */
+            top: 100%; /* メニューバーの下に配置 */
             left: 0;
-            width: 100%; /* ウィンドウ幅いっぱい */
+            width: 100%;
             background-color: #fff; /* 背景白 */
             color: #000; /* 文字黒 */
-            padding: 20px 0; /* 上下に余白 */
+            padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             z-index: 10; /* トップ画像より上に配置 */
         }
-        .menu-item:hover .submenu-area {
-            display: block; /* カーソルを当てると表示 */
+        .submenu-area.active {
+            display: block; /* メニューがクリックされた場合に表示 */
         }
         .submenu {
             display: flex;
@@ -100,49 +105,65 @@
     </div>
     <!-- ヘッダー内メニュー -->
     <nav class="header-menu">
-        <div class="menu-item">
-            Starrydataとは
-            <div class="submenu-area">
-                <ul class="submenu">
-                    <li class="submenu-item" onclick="location.href='/about/project-overview'">プロジェクト概要</li>
-                    <li class="submenu-item" onclick="location.href='/about/project-history'">プロジェクトの歩み</li>
-                    <li class="submenu-item" onclick="location.href='/about/members'">メンバー</li>
-                </ul>
-            </div>
-        </div>
-        <div class="menu-item">
-            データを集める・使う
-            <div class="submenu-area">
-                <ul class="submenu">
-                    <li class="submenu-item" onclick="location.href='/data/collecting-data'">データを集める</li>
-                    <li class="submenu-item" onclick="location.href='/data/download'">データセットのダウンロード</li>
-                    <li class="submenu-item" onclick="location.href='/data/python-usage'">Pythonでのデータファイルの使用</li>
-                </ul>
-            </div>
-        </div>
-        <div class="menu-item">
-            共同研究
-        </div>
-        <div class="menu-item">
-            プロジェクト
-        </div>
-        <div class="menu-item">
-            論文紹介
-        </div>
-        <div class="menu-item">
-            トピックス
-        </div>
-        <div class="menu-item">
-            FAQ
-        </div>
+        <div class="menu-item" onclick="showSubmenu('submenu1')">Starrydataとは</div>
+        <div class="menu-item" onclick="showSubmenu('submenu2')">データを集める・使う</div>
+        <div class="menu-item" onclick="showSubmenu('submenu3')">共同研究</div>
+        <div class="menu-item" onclick="showSubmenu('submenu4')">プロジェクト</div>
+        <div class="menu-item" onclick="showSubmenu('submenu5')">論文紹介</div>
+        <div class="menu-item" onclick="showSubmenu('submenu6')">トピックス</div>
+        <div class="menu-item" onclick="showSubmenu('submenu7')">FAQ</div>
         <div class="menu-item" onclick="location.href='/contact'">問い合わせ</div>
     </nav>
+    <!-- 言語切り替え -->
+    <div class="lang-switch" onclick="changeLanguage('en')">🇬🇧</div>
 </header>
 
 <!-- トップ画像 -->
 <div class="hero"></div>
 
+<!-- 子メニューエリア -->
+<div id="submenu1" class="submenu-area">
+    <ul class="submenu">
+        <li class="submenu-item" onclick="location.href='/about/project-overview'">プロジェクト概要</li>
+        <li class="submenu-item" onclick="location.href='/about/project-history'">プロジェクトの歩み</li>
+        <li class="submenu-item" onclick="location.href='/about/members'">メンバー</li>
+    </ul>
+</div>
+<div id="submenu2" class="submenu-area">
+    <ul class="submenu">
+        <li class="submenu-item" onclick="location.href='/data/collecting-data'">データを集める</li>
+        <li class="submenu-item" onclick="location.href='/data/download'">データセットのダウンロード</li>
+        <li class="submenu-item" onclick="location.href='/data/python-usage'">Pythonでのデータファイルの使用</li>
+    </ul>
+</div>
+<!-- 他の子メニューも同様に追加 -->
+
 <script>
+    // 子メニュー表示/非表示切り替え
+    function showSubmenu(id) {
+        // 他のすべてのサブメニューを非表示にする
+        document.querySelectorAll('.submenu-area').forEach(function(submenu) {
+            submenu.classList.remove('active');
+        });
+
+        // 対象のサブメニューを表示/非表示にする
+        const targetSubmenu = document.getElementById(id);
+        if (targetSubmenu) {
+            targetSubmenu.classList.add('active');
+        }
+    }
+
+    // クリック以外の方法でメニューを閉じる場合の準備（例: クリックアウト）
+    document.addEventListener('click', function(e) {
+        const isMenuItem = e.target.closest('.menu-item');
+        const isSubmenuArea = e.target.closest('.submenu-area');
+        if (!isMenuItem && !isSubmenuArea) {
+            document.querySelectorAll('.submenu-area').forEach(function(submenu) {
+                submenu.classList.remove('active');
+            });
+        }
+    });
+
     // 言語切り替え
     function changeLanguage(lang) {
         alert(`Language switched to: ${lang}`);
