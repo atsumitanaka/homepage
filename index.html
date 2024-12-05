@@ -22,7 +22,10 @@
             padding: 10px 20px;
             background-color: #e6e6e6; /* 薄いグレー */
             color: #000; /* ヘッダー文字色 */
-            position: relative;
+            position: fixed; /* 固定表示 */
+            top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000; /* トップ画像より上に配置 */
         }
         .logo {
@@ -55,6 +58,7 @@
 
         /* トップ画像セクション */
         .hero {
+            margin-top: 60px; /* ヘッダーの高さ分の余白を作成 */
             width: 100%;
             height: 600px; /* トップ画像の高さを広げる */
             background: url('hero-image.jpg') no-repeat center center/cover;
@@ -66,7 +70,7 @@
         .submenu-area {
             display: none; /* 初期状態は非表示 */
             position: absolute;
-            top: 100%; /* メニューバーの下に配置 */
+            top: 60px; /* ヘッダーのすぐ下に配置 */
             left: 0;
             width: 100%;
             background-color: #fff; /* 背景白 */
