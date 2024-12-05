@@ -63,10 +63,10 @@
             position: absolute;
             top: 100%; /* ヘッダーのすぐ下に配置 */
             left: 0;
-            width: 100%;
+            width: 100%; /* ウィンドウ幅いっぱい */
             background-color: #fff; /* 背景白 */
             color: #000; /* 文字黒 */
-            padding: 20px;
+            padding: 20px 0; /* 上下に余白 */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             z-index: 10; /* トップ画像より上に配置 */
@@ -80,7 +80,8 @@
             gap: 10px;
             padding: 0;
             margin: 0;
-            margin-left: 25%; /* 横幅の25%余白を設定 */
+            width: 60%; /* 子メニューのエリア幅 */
+            margin-left: 20%; /* 左余白を20%開ける */
         }
         .submenu-item {
             font-size: 14px; /* 子メニューのフォントも小さめ */
