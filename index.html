@@ -25,7 +25,7 @@
             position: fixed; /* 固定表示 */
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100%; /* ヘッダーの幅をウィンドウ幅いっぱい */
             z-index: 1000; /* トップ画像より上に配置 */
         }
         .logo {
@@ -64,18 +64,19 @@
         .submenu-area {
             display: none; /* 初期状態は非表示 */
             position: absolute;
-            top: 60px; /* ヘッダーのすぐ下に配置 */
+            top: 100%; /* ヘッダーのすぐ下に配置 */
             left: 0;
-            width: 100%; /* ウィンドウ幅いっぱい */
+            width: 100%; /* ヘッダー幅と同じ */
             background-color: #fff; /* 背景白 */
             color: #000; /* 文字黒 */
-            padding: 20px;
+            padding: 20px 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             z-index: 10; /* トップ画像より上に配置 */
         }
-        .menu-item:hover .submenu-area {
-            display: block; /* カーソルを当てると表示 */
+        .menu-item:hover .submenu-area,
+        .submenu-area:hover {
+            display: block; /* メニュー項目や子メニューエリアにカーソルがある場合は表示 */
         }
         .submenu {
             display: flex;
@@ -84,7 +85,6 @@
             gap: 10px;
             padding: 0;
             margin: 0;
-            width: 100%;
         }
         .submenu-item {
             font-size: 14px; /* 子メニューのフォントも小さめ */
