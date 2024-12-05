@@ -22,103 +22,57 @@
             padding: 10px 20px;
             background-color: #e6e6e6; /* 薄いグレー */
             color: #000; /* ヘッダー文字色 */
+            position: relative;
         }
         .logo img {
             height: 50px; /* ロゴ画像の高さ */
             object-fit: contain;
         }
-        .header-buttons {
+        .header-menu {
             display: flex;
-            gap: 10px;
-        }
-        .header-buttons button {
-            padding: 8px 16px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            color: #000; /* ボタン文字色を黒 */
-            cursor: pointer;
-        }
-        .header-buttons button:hover {
-            background-color: #ddd; /* ホバー時の背景色を少し濃いグレーに */
-        }
-
-        /* ヒーローセクション */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background: url('hero-image.jpg') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* キャッチコピーのスタイル */
-        .catchphrase {
-            max-width: 600px;
-            font-size: 32px; /* フォントサイズを大きく */
-            font-weight: bold;
-            line-height: 1.8;
-            text-align: left;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 視認性向上のため影を追加 */
-            margin-bottom: 20px;
-        }
-
-        /* メニューのスタイル */
-        .menu {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* 左揃え */
-            gap: 10px;
+            gap: 20px;
         }
         .menu-item {
-            position: relative;
-            font-size: 18px; /* フォントサイズ */
-            font-weight: bold; /* 太字 */
-            color: #000; /* 黒字 */
+            font-size: 14px; /* 小さめのフォント */
+            color: #000;
             cursor: pointer;
+            position: relative;
         }
-        .menu-item:hover .submenu {
-            display: block; /* 子メニューを表示 */
+        .menu-item:hover {
+            text-decoration: underline;
         }
 
-        /* サブメニューのスタイル */
-        .submenu {
-            display: none; /* 初期状態で非表示 */
+        /* 子メニューエリア */
+        .submenu-area {
+            display: none; /* 初期状態は非表示 */
             position: absolute;
             top: 100%;
             left: 0;
+            width: 100%;
             background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 10px;
-            list-style: none;
-            margin: 0;
+            color: #000;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
             z-index: 1000;
         }
-        .submenu li {
-            padding: 5px 10px;
-            font-size: 16px;
+        .submenu-area.active {
+            display: block; /* メニューがクリックされた場合に表示 */
+        }
+        .submenu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+        }
+        .submenu-item {
+            font-size: 14px; /* 子メニューのフォントも小さめ */
             color: #000;
-            font-weight: normal;
             cursor: pointer;
         }
-        .submenu li:hover {
-            background-color: #ddd; /* ホバー時の背景色 */
-        }
-
-        @media screen and (max-width: 768px) {
-            .hero {
-                align-items: center;
-                text-align: center;
-            }
-            .menu {
-                align-items: center;
-            }
+        .submenu-item:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -129,52 +83,66 @@
     <div class="logo">
         <img src="logo-image.png" alt="企業ロゴ">
     </div>
-    <!-- 問い合わせと言語切り替えボタン -->
-    <div class="header-buttons">
-        <button onclick="location.href='/contact'">問い合わせ</button>
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('ja')">日本語</button>
-    </div>
+    <!-- ヘッダー内メニュー -->
+    <nav class="header-menu">
+        <div class="menu-item" onclick="showSubmenu('submenu1')">Starrydataとは</div>
+        <div class="menu-item" onclick="showSubmenu('submenu2')">データを集める・使う</div>
+        <div class="menu-item" onclick="showSubmenu('submenu3')">共同研究</div>
+        <div class="menu-item" onclick="showSubmenu('submenu4')">プロジェクト</div>
+        <div class="menu-item" onclick="showSubmenu('submenu5')">論文紹介</div>
+        <div class="menu-item" onclick="showSubmenu('submenu6')">トピックス</div>
+        <div class="menu-item" onclick="showSubmenu('submenu7')">FAQ</div>
+    </nav>
 </header>
 
-<!-- ヒーローセクション -->
-<div class="hero">
-    <!-- キャッチコピー -->
-    <div class="catchphrase">
-        無機材料科学実験データの<br>
-        オープンデータベース構築プロジェクト
-    </div>
-    <!-- 左揃えのメニュー項目 -->
-    <div class="menu">
-        <div class="menu-item">
-            Starrydataとは
-            <ul class="submenu">
-                <li onclick="location.href='/about/project-overview'">プロジェクト概要</li>
-                <li onclick="location.href='/about/project-history'">プロジェクトの歩み</li>
-                <li onclick="location.href='/about/members'">メンバー</li>
-            </ul>
-        </div>
-        <div class="menu-item">
-            データを集める・使う
-            <ul class="submenu">
-                <li onclick="location.href='/data/collecting-data'">データを集める</li>
-                <li onclick="location.href='/data/download'">データセットのダウンロード</li>
-                <li onclick="location.href='/data/python-usage'">Pythonでのデータファイルの使用</li>
-            </ul>
-        </div>
-        <div class="menu-item" onclick="location.href='/collaboration'">共同研究</div>
-        <div class="menu-item" onclick="location.href='/projects'">プロジェクト</div>
-        <div class="menu-item" onclick="location.href='/papers'">論文紹介</div>
-        <div class="menu-item" onclick="location.href='/topics'">トピックス</div>
-        <div class="menu-item" onclick="location.href='/faq'">FAQ</div>
-    </div>
+<!-- 子メニューエリア -->
+<div id="submenu1" class="submenu-area">
+    <ul class="submenu">
+        <li class="submenu-item" onclick="location.href='/about/project-overview'">プロジェクト概要</li>
+        <li class="submenu-item" onclick="location.href='/about/project-history'">プロジェクトの歩み</li>
+        <li class="submenu-item" onclick="location.href='/about/members'">メンバー</li>
+    </ul>
 </div>
+<div id="submenu2" class="submenu-area">
+    <ul class="submenu">
+        <li class="submenu-item" onclick="location.href='/data/collecting-data'">データを集める</li>
+        <li class="submenu-item" onclick="location.href='/data/download'">データセットのダウンロード</li>
+        <li class="submenu-item" onclick="location.href='/data/python-usage'">Pythonでのデータファイルの使用</li>
+    </ul>
+</div>
+<div id="submenu3" class="submenu-area">
+    <ul class="submenu">
+        <li class="submenu-item" onclick="location.href='/collaboration/overview'">共同研究の概要</li>
+        <li class="submenu-item" onclick="location.href='/collaboration/partners'">研究パートナー</li>
+    </ul>
+</div>
+<!-- 他の子メニューも同様に追加 -->
 
 <script>
-    // 言語切り替えボタンの処理
-    function changeLanguage(lang) {
-        alert(lang + "に切り替えます。（ここに言語切り替えの処理を追加）");
+    // 子メニュー表示/非表示切り替え
+    function showSubmenu(id) {
+        // 他のすべてのサブメニューを非表示にする
+        document.querySelectorAll('.submenu-area').forEach(function(submenu) {
+            submenu.classList.remove('active');
+        });
+
+        // 対象のサブメニューを表示/非表示にする
+        const targetSubmenu = document.getElementById(id);
+        if (targetSubmenu) {
+            targetSubmenu.classList.add('active');
+        }
     }
+
+    // クリック以外の方法でメニューを閉じる場合の準備（例: クリックアウト）
+    document.addEventListener('click', function(e) {
+        const isMenuItem = e.target.closest('.menu-item');
+        const isSubmenuArea = e.target.closest('.submenu-area');
+        if (!isMenuItem && !isSubmenuArea) {
+            document.querySelectorAll('.submenu-area').forEach(function(submenu) {
+                submenu.classList.remove('active');
+            });
+        }
+    });
 </script>
 
 </body>
