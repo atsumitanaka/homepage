@@ -17,12 +17,16 @@
         /* ヘッダーのスタイル */
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* メニューを中央揃え */
             align-items: center;
             padding: 10px 20px;
             background-color: #e6e6e6; /* 薄いグレー */
             color: #000; /* ヘッダー文字色 */
             position: relative;
+        }
+        .logo {
+            position: absolute;
+            left: 20px; /* 左端にロゴ */
         }
         .logo img {
             height: 50px; /* ロゴ画像の高さ */
@@ -41,6 +45,19 @@
         .menu-item:hover {
             text-decoration: underline;
         }
+        .lang-switch {
+            position: absolute;
+            right: 20px; /* 右端に言語切り替え */
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* トップ画像セクション */
+        .hero {
+            width: 100%;
+            height: 400px; /* トップ画像の高さ */
+            background: url('hero-image.jpg') no-repeat center center/cover;
+        }
 
         /* 子メニューエリア */
         .submenu-area {
@@ -49,8 +66,8 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background-color: #fff;
-            color: #000;
+            background-color: #fff; /* 背景白 */
+            color: #000; /* 文字黒 */
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
@@ -92,8 +109,14 @@
         <div class="menu-item" onclick="showSubmenu('submenu5')">論文紹介</div>
         <div class="menu-item" onclick="showSubmenu('submenu6')">トピックス</div>
         <div class="menu-item" onclick="showSubmenu('submenu7')">FAQ</div>
+        <div class="menu-item" onclick="location.href='/contact'">問い合わせ</div>
     </nav>
+    <!-- 言語切り替え -->
+    <div class="lang-switch" onclick="changeLanguage('en')">🇬🇧</div>
 </header>
+
+<!-- トップ画像 -->
+<div class="hero"></div>
 
 <!-- 子メニューエリア -->
 <div id="submenu1" class="submenu-area">
@@ -108,12 +131,6 @@
         <li class="submenu-item" onclick="location.href='/data/collecting-data'">データを集める</li>
         <li class="submenu-item" onclick="location.href='/data/download'">データセットのダウンロード</li>
         <li class="submenu-item" onclick="location.href='/data/python-usage'">Pythonでのデータファイルの使用</li>
-    </ul>
-</div>
-<div id="submenu3" class="submenu-area">
-    <ul class="submenu">
-        <li class="submenu-item" onclick="location.href='/collaboration/overview'">共同研究の概要</li>
-        <li class="submenu-item" onclick="location.href='/collaboration/partners'">研究パートナー</li>
     </ul>
 </div>
 <!-- 他の子メニューも同様に追加 -->
@@ -143,6 +160,11 @@
             });
         }
     });
+
+    // 言語切り替え
+    function changeLanguage(lang) {
+        alert(`Language switched to: ${lang}`);
+    }
 </script>
 
 </body>
