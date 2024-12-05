@@ -40,11 +40,13 @@
             display: flex;
             gap: 20px;
         }
+        .menu-item-wrapper {
+            position: relative; /* 子メニューエリアを含むホバー領域用 */
+        }
         .menu-item {
             font-size: 14px; /* 小さめのフォント */
             color: #000;
             cursor: pointer;
-            position: relative; /* 子メニュー配置のため */
         }
         .menu-item:hover {
             text-decoration: underline;
@@ -63,10 +65,10 @@
         /* 子メニューエリア */
         .submenu-area {
             display: none; /* 初期状態は非表示 */
-            position: fixed; /* ウィンドウ全体に基づく配置 */
-            top: 60px; /* ヘッダーのすぐ下に配置 */
+            position: absolute;
+            top: 100%; /* 親メニューの直下に配置 */
             left: 0;
-            width: 100%; /* ウィンドウ幅いっぱい */
+            width: 100%; /* ヘッダー幅と同じ */
             background-color: #fff; /* 背景白 */
             color: #000; /* 文字黒 */
             padding: 20px 0;
@@ -74,8 +76,7 @@
             box-sizing: border-box;
             z-index: 10; /* トップ画像より上に配置 */
         }
-        .menu-item:hover .submenu-area,
-        .submenu-area:hover {
+        .menu-item-wrapper:hover .submenu-area {
             display: block; /* メニュー項目や子メニューエリアにカーソルがある場合は表示 */
         }
         .submenu {
@@ -107,8 +108,8 @@
     </div>
     <!-- ヘッダー内メニュー -->
     <nav class="header-menu">
-        <div class="menu-item">
-            Starrydataとは
+        <div class="menu-item-wrapper">
+            <div class="menu-item">Starrydataとは</div>
             <div class="submenu-area">
                 <ul class="submenu">
                     <li class="submenu-item" onclick="location.href='/about/project-overview'">プロジェクト概要</li>
@@ -117,8 +118,8 @@
                 </ul>
             </div>
         </div>
-        <div class="menu-item">
-            データを集める・使う
+        <div class="menu-item-wrapper">
+            <div class="menu-item">データを集める・使う</div>
             <div class="submenu-area">
                 <ul class="submenu">
                     <li class="submenu-item" onclick="location.href='/data/collecting-data'">データを集める</li>
@@ -127,21 +128,11 @@
                 </ul>
             </div>
         </div>
-        <div class="menu-item">
-            共同研究
-        </div>
-        <div class="menu-item">
-            プロジェクト
-        </div>
-        <div class="menu-item">
-            論文紹介
-        </div>
-        <div class="menu-item">
-            トピックス
-        </div>
-        <div class="menu-item">
-            FAQ
-        </div>
+        <div class="menu-item">共同研究</div>
+        <div class="menu-item">プロジェクト</div>
+        <div class="menu-item">論文紹介</div>
+        <div class="menu-item">トピックス</div>
+        <div class="menu-item">FAQ</div>
         <div class="menu-item" onclick="location.href='/contact'">問い合わせ</div>
     </nav>
 </header>
