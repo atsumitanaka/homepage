@@ -80,17 +80,18 @@
         .submenu {
             display: flex;
             flex-direction: column;
+            align-items: center; /* 子メニュー項目を中央配置 */
             gap: 10px;
             padding: 0;
             margin: 0;
-            width: 50%; /* 子メニューエリア内で幅を調整 */
-            margin-left: 25%; /* 子メニューエリア全体の中央より少し左に配置 */
+            width: 100%;
         }
         .submenu-item {
             font-size: 14px; /* 子メニューのフォントも小さめ */
             color: #000;
             cursor: pointer;
-            text-align: left;
+            text-align: center; /* 項目名を中央配置 */
+            width: 100%; /* 横幅を親エリアと一致 */
         }
         .submenu-item:hover {
             text-decoration: underline;
